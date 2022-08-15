@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="pagina-login">
+        <div class="forms">
+          <form action="/cadastro" method="post" class="form-registro">
+            <input type="text" name="nome" placeholder="Nome"/>
+            <input type="password" name="senha" placeholder="Senha"/>
+            <input type="text" name="email" placeholder="E-mail"/>
+            <button>registrar</button>
+            <p class="message">Já se registrou? <a href="#">Entrar</a></p>
+          </form>
+          <form action="/login" method="get" class="form-login">
+            <input type="text" name="email" placeholder="E-mail"/>
+            <input type="password" name="senha" placeholder="Senha"/>
+            <button>login</button>
+            <p class="message">Ainda não se registrou? <a href="#">Criar conta</a></p>
+          </form>
+        </div>
+      </div>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
+
+
