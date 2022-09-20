@@ -27,6 +27,21 @@ input:focus {
   cursor: pointer;
 }
 
+::-webkit-input-placeholder { /* Edge */
+  color: green;
+  font-size: 1rem;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+  color: green;
+  font-size: 1rem;
+}
+
+::placeholder {
+  color: green;
+  font-size: 1rem;
+}
+
 body {
   background: #76b852; /* fallback for old browsers */
   background: rgb(141,194,111);
