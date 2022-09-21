@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/tables.css">
+<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="static/css/styleLivros.css">
+<link rel="stylesheet" href="static/css/header.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Livros</title>
+</head>
+<body>
+
+    <header>
+        <div>
+            <span class="logo"><a href=""><img src="./static/img/iconbook.png" alt=""></a></span>
+            <span><a href="">Livros</a></span>
+            <span><a href="/resenha">Resenhas</a></span>
+            <span><a href="/assinatura">Assinaturas</a></span>
+            <span><a href="/cadastrarlivros">Cadastrar Livros</a></span>
+        </div>
+    </header>
+        
+    <div class="container">
+        <table>
+            <tr>
+                <th>Livro</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Descrição</th>
+            </tr>
+            {{ range .Livros }}
+            <tr>
+                <td>{{ .Nome }}</td>
+                <td>{{ .Autor }}</td>
+                <td>{{ .Genero }}</td>
+                <td>{{ .Descricao }}</td>
+            </tr>
+            {{end}}
+        </table>
+        {{ if .Admin }}
+        <form class="formulario" action="">
+            <input type="text" id="livro" name="livro" placeholder="Livro">
+            <input type="text" id="autor" name="autor" placeholder="Autor">
+            <input type="text" id="genero" name="genero" placeholder="Gênero">
+            <input type="text" id="descricao" name="descricao" placeholder="Descrição">
+            <input type="text" id="link" name="link" placeholder="Link">
+            <input class="formularioSubmit" type="submit" value="Adicionar">
+        </form>
+        {{end}}
+    </div>
+</body>
+</html>

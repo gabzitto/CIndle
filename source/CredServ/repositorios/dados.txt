@@ -1,0 +1,1 @@
+[{"Email":"caio@","Senha":"123456","Nome":"Caio","Assinante":false,"Admin":false},{"Email":"bruno@","Senha":"123456","Nome":"Caio","Assinante":false,"Admin":false}]

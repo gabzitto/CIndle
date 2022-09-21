@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/tables.css">
+<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="static/css/styleResenhas.css">
+<link rel="stylesheet" href="static/css/header.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Resenhas</title>
+</head>
+<body>
+    <header>
+        <div>
+            <span class="logo"><a href=""><img src="./static/img/iconbook.png" alt=""></a></span>
+            <span><a href="/livros">Livros</a></span>
+            <span><a href="">Resenhas</a></span>
+            <span><a href="/assinatura">Assinaturas</a></span>
+            <span><a href="/cadastrarlivros">Cadastrar Livros</a></span>
+        </div>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Usuário</th>
+                <th>Livro</th>
+                <th>Resenha</th>
+            </tr>
+            {{ range .Resenhas }}
+            <tr>
+                <td>{{ .Usuario }}</td>
+                <td>{{ .NomeLivro }}</td>
+                <td>{{ .Descricao }}</td>
+            </tr>
+            {{end}}
+        </table>
+
+        <form class="formulario" action="/resenha" method="post">
+            <input type="text" id="livro" name="livro" placeholder="Livro">
+            <input type="text" id="resenha" name="resenha" placeholder="Resenha">
+            <input class="formularioSubmit" type="submit" value="Adicionar">
+        </form>
+    </div>
+</body>
+</html>
