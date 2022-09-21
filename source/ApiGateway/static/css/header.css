@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;    
+  }
+
+header{
+    background-color: green;
+    height: 80px;
+    align-items: center;
+    display: flex;
+}
+
+.logo{
+    min-width: 20px;
+    display: inline-block;
+    min-height: 20px;
+    /* background-color: rgb(192, 147, 235); */
+    /* border-radius: 100%; */
+    background-image: url("../img/iconbook3.");
+    background-position: center;
+}
+
+header a{
+    text-decoration: none;
+    color: aqua;
+    font-size: 1.5rem;
+    padding: 1rem;
+
+}
+header > div{
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+header img{
+    width: 50px;
+    height: 50px;
+}

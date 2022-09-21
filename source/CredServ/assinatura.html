@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/tables.css">
+<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="static/css/styleAssinaturas.css">
+<link rel="stylesheet" href="static/css/header.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Assinaturas</title>
+</head>
+<body>
+     <script>
+        document.cookie = "ApiToken={{ .Token }};"
+        document.cookie = "Username={{ .Usuario }};"
+      </script>
+    <header>
+        <div>
+            <span class="logo"><a href=""><img src="./static/img/iconbook.png" alt=""></a></span>
+            <span><a href="/livros">Livros</a></span>
+            <span><a href="/resenha">Resenhas</a></span>
+            <span><a>Assinaturas</a></span>
+            <span><a href="/cadastrarlivros">Cadastrar Livros</a></span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div>
+            <!-- <h1 class="assinaturas">Assinaturas</h1> -->
+        </div>
+        {{ if not .Assinante }}
+        <form class="formulario formAssinaturas" action="/assinatura" method="post">
+            <div class="assinaturaInput">
+                <input class="firstInput" type="text" id="numero" name="numero" placeholder="Número do cartão">
+            </div>
+            <div class="assinaturaInputMid">
+                <input type="text" id="cvv" name="cvv" placeholder="CVV">
+                <input type="text" id="validade" name="validade" placeholder="Data de validade">
+                <input type="hidden" id="tokenForm" value="" width="0">
+            </div>
+            <div>
+                <input class="formularioSubmit" type="submit" value="Adicionar">
+            </div>
+        </form>
+        {{ else }}
+        <h1> Usuário já é assinante </h1>
+        {{end}}
+    </div>
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        //document.getElementById("tokenForm").value = getCookie("ApiToken");
+      </script>
+</body>
+</html>
