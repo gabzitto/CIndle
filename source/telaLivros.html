@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/tables.css">
+<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="static/css/styleLivros.css">
+<link rel="stylesheet" href="static/css/header.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Livros</title>
+</head>
+<body>
+
+    <header>
+        <div>
+            <span class="logo"><a href="./logou.html"><img src="./static/img/iconbook.png" alt=""></a></span>
+            <span><a href="./telaLivros.html">Livros</a></span>
+            <span><a href="./telaResenhas.html">Resenhas</a></span>
+            <span><a href="./telaAssinaturas.html">Assinaturas</a></span>
+        </div>
+    </header>
+        
+    <div class="container">
+        <table>
+            <tr>
+                <th>Livro</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Descrição</th>
+            </tr>
+            <tr>
+                <td>Harry Potter e a Pedra Filosofal</td>
+                <td>J.K. Rowling</td>
+                <td>Fantasia</td>
+                <td>Harry adentra um mundo mágico que jamais imaginara, vivendo diversas aventuras com seus novos amigos, Rony Weasley e Hermione Granger.</td>
+            </tr>
+            <tr>
+                <td>Clean Code </td>
+                <td>Robert Cecil Martin</td>
+                <td>Tecnologia</td>
+                <td>O renomado especialista em software, Robert C. Martin, apresenta um paradigma revolucionário com Código limpo: Habilidades Práticas do Agile Software.</td>
+            </tr>
+            <tr>
+                <td>A história secreta</td>
+                <td>Donna Tartt</td>
+                <td>Suspense</td>
+                <td>Um sofisticado grupo de alunos de grego resolve reproduzir as orgias dionisíacas da Antiguidade. Uma obra cujos temas são cumplicidade e decepção, inocência e corrupção moral, responsabilidade e culpa.</td>
+            </tr>
+        </table>
+
+        <form class="formulario" action="">
+            <input type="text" id="fname" name="fname" placeholder="Livro">
+            <input type="text" id="fname" name="fname" placeholder="Autor">
+            <input type="text" id="fname" name="fname" placeholder="Gênero">
+            <input type="text" id="fname" name="fname" placeholder="Descrição">
+            <input class="formularioSubmit" type="submit" value="Adicionar">
+        </form>
+    </div>
+</body>
+</html>
+
+

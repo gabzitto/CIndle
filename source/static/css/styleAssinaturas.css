@@ -1,0 +1,40 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.formAssinaturas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.assinaturaInput{
+  width: 100%;
+}
+
+.assinaturaInputMid{
+  display: flex;
+  justify-content: space-between;
+}
+
+.assinaturaInputMid input{
+  width: 40%;
+}
+
+.formAssinaturas > div input{
+  margin:0 0 2rem 0;
+  gap: 30px;
+}
+
+.formAssinaturas .firstInput{
+  width: 100%;
+}
+
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: rgb(141,194,111);
+  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}

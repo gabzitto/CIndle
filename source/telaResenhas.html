@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/css/tables.css">
+<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="static/css/styleResenhas.css">
+<link rel="stylesheet" href="static/css/header.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Resenhas</title>
+</head>
+<body>
+
+    <header>
+        <div>
+            <span class="logo"><a href="./logou.html"><img src="./static/img/iconbook.png" alt=""></a></span>
+            <span><a href="./telaLivros.html">Livros</a></span>
+            <span><a href="./telaResenhas.html">Resenhas</a></span>
+            <span><a href="./telaAssinaturas.html">Assinaturas</a></span>
+        </div>
+    </header>
+        
+    <div class="container">
+        <table>
+            <tr>
+                <th>Usuário</th>
+                <th>Livro</th>
+                <th>Resenha</th>
+            </tr>
+            <tr>
+                <td>João</td>
+                <td>Clean Code</td>
+                <td>Depois de ter lido esse livro espero me tornar um novo Elon Musk</td>
+            </tr>
+            <tr>
+                <td>Agostinho Carrara</td>
+                <td>Harry Potter e a Pedra Filosofal</td>
+                <td>Com certeza, Sonserina não!</td>
+            </tr>
+        </table>
+
+        <form class="formulario" action="">
+            <input type="text" id="fname" name="fname" placeholder="Usuário">
+            <input type="text" id="fname" name="fname" placeholder="Livro">
+            <input type="text" id="fname" name="fname" placeholder="Resenha">
+            <input class="formularioSubmit" type="submit" value="Adicionar">
+        </form>
+    </div>
+</body>
+</html>
+
+
