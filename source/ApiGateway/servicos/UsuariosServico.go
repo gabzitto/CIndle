@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -29,7 +30,8 @@ func (u *UsuariosServ) RealizarLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func (u *UsuariosServ) RealizarAssinatura(w http.ResponseWriter, r *http.Request) {
-	req, err := http.NewRequest("POST", u.caminho+"/assinatura", r.Body)
+	body, _ := ioutil.ReadAll(r.Body)
+	req, err := http.NewRequest("POST", u.caminho+"/assinatura", bytes.NewReader(body))
 	if err != nil {
 		return
 	}

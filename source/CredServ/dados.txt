@@ -1,1 +1,0 @@
-[{"Email":"admin@admin.ad","Senha":"admin","Nome":"Administrador","Assinante":true,"Admin":true}]

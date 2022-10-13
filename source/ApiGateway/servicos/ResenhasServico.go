@@ -2,7 +2,6 @@ package servicos
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -22,9 +21,8 @@ func (re *ResenhasServ) ListarResenhas(w http.ResponseWriter, r *http.Request) {
 	responderRequisicao(resp, w)
 }
 
-func (re *ResenhasServ) AdicionarResenha(user string, w http.ResponseWriter, r *http.Request) {
-	bytes, _ := ioutil.ReadAll(r.Body)
-	payload := fmt.Sprintf("usuario=%s&%s", user, string(bytes))
+func (re *ResenhasServ) AdicionarResenha(user, livro, resenha string, w http.ResponseWriter, r *http.Request) {
+	payload := fmt.Sprintf("usuario=%s&livro=%s&resenha=%s", user, livro, resenha)
 
 	req, err := http.NewRequest("POST", re.caminho+"/resenha", strings.NewReader(payload))
 

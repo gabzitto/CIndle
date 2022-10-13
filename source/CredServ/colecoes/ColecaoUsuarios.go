@@ -46,6 +46,7 @@ func (c *ColecaoUsuariosImp) ValidarCredenciais(user repositorio.Usuario) (strin
 func (c *ColecaoUsuariosImp) CriarCredenciais(user repositorio.Usuario) error {
 	_, err := c.RepositorioUsuarios.RepoUsuarios.Read(user.Email)
 	if err == nil {
+		fmt.Println(user)
 		fmt.Println("ja tem")
 		return fmt.Errorf("Credenciais ja cadastradsa")
 	}

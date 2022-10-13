@@ -1,7 +1,12 @@
-FROM golang:1.18-alpine
+FROM golang:1.19-alpine
 
 WORKDIR /app
 
-COPY cred-serv ./
+COPY . ./
+
+RUN go mod tidy
+RUN go mod download
+
+RUN go build -o cred-serv
 
 CMD [ "./cred-serv" ]

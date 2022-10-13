@@ -2,6 +2,7 @@ package gateway
 
 import (
 	servicos "ApiGateway/servicos"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -64,22 +65,36 @@ func (s *Server) ControladorResenha(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		s.c.ResenhasServico.ListarResenhas(w, r)
 	} else {
-		s.c.ResenhasServico.AdicionarResenha(user.Value, w, r)
+		r.ParseForm()
+		livro := r.Form.Get("livro")
+		if s.c.LivrosSevico.VerificarExistenciaLivro(livro) {
+			resenha := r.Form.Get("resenha")
+			fmt.Println("Livro existente")
+			s.c.ResenhasServico.AdicionarResenha(user.Value, livro, resenha, w, r)
+			return
+		}
+		fmt.Println("Livro nao existente")
+		s.c.ResenhasServico.ListarResenhas(w, r)
 	}
 }
 
 func (s *Server) ControladorAssinatura(w http.ResponseWriter, r *http.Request) {
-	user, _ := r.Cookie("Username")
-	token, _ := r.Cookie("ApiToken")
-	perms := s.c.UsuariosServico.ChecarPermissoes(user.Value, token.Value, w, r)
-	if perms[0] == "false" {
-		s.c.UsuariosServico.IrParaAssinatura(w, r)
-	}
+	// user, _ := r.Cookie("Username")
+	// token, _ := r.Cookie("ApiToken")
+	// perms := s.c.UsuariosServico.ChecarPermissoes(user.Value, token.Value, w, r)
+	// fmt.Println(perms)
+	// if perms[0] == "false" {
+	// s.c.UsuariosServico.IrParaAssinatura(w, r)
+	// }
 	if r.Method == "GET" {
 		s.c.UsuariosServico.IrParaAssinatura(w, r)
 	} else {
 		s.c.UsuariosServico.RealizarAssinatura(w, r)
 	}
+}
+
+func RedirecionarLogin(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
 
 /*
@@ -104,9 +119,9 @@ func StartServer() {
 	}*/
 
 	s.c = &Cindle{
-		UsuariosServico: servicos.InicializarUsuariosServ("http://localhost:8000"),
-		ResenhasServico: servicos.InicializarResenhasServ("http://localhost:8002"),
-		LivrosSevico:    servicos.InicializarLivrosServ("http://localhost:8003"),
+		UsuariosServico: servicos.InicializarUsuariosServ("http://cred:8000"),
+		ResenhasServico: servicos.InicializarResenhasServ("http://resenhas:8002"),
+		LivrosSevico:    servicos.InicializarLivrosServ("http://livros:8003"),
 	}
 	http.HandleFunc("/login", s.ControladorLogin)
 	http.HandleFunc("/livros", s.ControladorLivros)
@@ -114,6 +129,7 @@ func StartServer() {
 	http.HandleFunc("/cadastro", s.ControladorCadastro)
 	http.HandleFunc("/resenha", s.ControladorResenha)
 	http.HandleFunc("/assinatura", s.ControladorAssinatura)
+	http.HandleFunc("/", RedirecionarLogin)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 

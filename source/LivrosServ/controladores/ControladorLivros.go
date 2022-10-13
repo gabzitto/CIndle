@@ -58,6 +58,7 @@ func (c *ControladorLivrosImp) CadastrarLivro(li repositorio.Livro) error {
 
 func (c *ControladorLivrosImp) ValidarLivro(li repositorio.Livro) error {
 	if len(li.Nome) < 2 {
+		fmt.Println(li.Nome)
 		return fmt.Errorf("Livro invalido")
 	}
 	return nil

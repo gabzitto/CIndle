@@ -1,7 +1,12 @@
-FROM golang:1.16-alpine
+FROM golang:1.19-alpine
 
 WORKDIR /app
 
-COPY livro-serv ./
+COPY . ./
+
+RUN go mod tidy
+RUN go mod download
+
+RUN go build -o livro-serv
 
 CMD [ "./livro-serv" ]

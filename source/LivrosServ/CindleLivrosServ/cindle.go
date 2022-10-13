@@ -75,6 +75,7 @@ func StartServer() {
 
 	http.HandleFunc("/livros", s.ControladorTelaLivro)
 	http.HandleFunc("/cadastrarlivros", s.ControladorTelaCadastroLivro)
+	http.HandleFunc("/listarLivros", s.ControladorListagemLivros)
 
 	sv := &http.Server{
 		Addr: ":8003",
@@ -88,6 +89,18 @@ func StartServer() {
 
 type DadosLivros struct {
 	Livros []repositorio.Livro
+}
+
+func (s *Server) ControladorListagemLivros(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		livros := s.c.ListarLivros()
+		livrosString := ""
+		for _, l := range livros {
+			livrosString += l.Nome
+			livrosString += "#"
+		}
+		w.Write([]byte(livrosString))
+	}
 }
 
 func (s *Server) ControladorTelaCadastroLivro(w http.ResponseWriter, r *http.Request) {
